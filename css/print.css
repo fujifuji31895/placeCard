@@ -1,0 +1,63 @@
+/* 印刷時の上下左右の空白をなくす */
+@page {
+  margin: 0;
+  size: A4 portrait;
+  margin: 0mm; /* ヘッダーとフッター非表示用 */
+}
+
+* {
+  margin: 0mm;
+  padding: 0mm;
+}
+
+.print_pages {
+  /* 印刷時の設定 */
+  width: 210mm; /* A4の横の長さ: 210mm */
+  height: 297mm; /* A4の縦の長さ: 297mm */
+  page-break-after: always; /* ページの最後に改ページを入れる */
+
+  /* 名札のレイアウト設定 */
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* 最後のページは改ページを入れない設定 */
+.print_pages:last-child {
+  page-break-after: auto;
+}
+
+/* 分割の設定 */
+.print_pages > div {
+  height: calc(100vh / 4);
+  /*border: 1mm solid #bea7a7; */
+}
+
+/* 名札のフォントと余白設定(大枠) */
+.name_info {
+  font-size: 28mm;
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+
+/* 名前の余白設定 */
+.member {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+
+/* チーム名のフォント設定 */
+.team {
+  font-size: 14mm;
+}
+
+/* ルビのフォント設定 */
+ruby > rt {
+  font-size: 8mm;
+}
+
+/* z軸に対して回転 */
+.rev {
+  transform: rotateZ(180deg);
+}
